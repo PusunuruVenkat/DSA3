@@ -1,0 +1,5 @@
+com\matrixchain\model\OptimizationResult.class
+com\matrixchain\service\MatrixChainService.class
+com\matrixchain\model\OptimizationRequest.class
+com\matrixchain\controller\MatrixChainController.class
+com\matrixchain\MatrixChainApplication.class

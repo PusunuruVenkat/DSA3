@@ -1,0 +1,1264 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #050c15;
+    color: #e8f7ff;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.background-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 220, 255, 0.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 220, 255, 0.045) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+}
+
+.glow {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: -4;
+}
+
+.glow-one {
+    top: -180px;
+    left: -120px;
+    background: #00d9ff;
+}
+
+.glow-two {
+    right: -180px;
+    bottom: -150px;
+    background: #008cff;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+    padding: 45px 0 70px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    margin-bottom: 32px;
+}
+
+.tag {
+    display: inline-block;
+
+    color: #54eaff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 58px);
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+h1 span {
+    color: #00d9ff;
+}
+
+.subtitle {
+    margin-top: 14px;
+
+    color: #89a8ba;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel {
+    position: relative;
+
+    margin-top: 24px;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 27, 40, 0.96),
+            rgba(5, 15, 25, 0.96)
+        );
+
+    border: 1px solid rgba(0, 217, 255, 0.18);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.panel::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 28px;
+    right: 28px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 217, 255, 0.5),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   PANEL TITLE
+   ========================================================= */
+
+.panel-title {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 16px;
+
+    margin-bottom: 28px;
+}
+
+.number {
+    min-width: 38px;
+
+    color: #00d9ff;
+
+    font-family: monospace;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    padding-top: 4px;
+}
+
+.panel-title h2 {
+    font-size: 22px;
+
+    letter-spacing: 1px;
+
+    color: #f1fbff;
+}
+
+.panel-title p {
+    margin-top: 7px;
+
+    color: #7896a8;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CONFIGURATION
+   ========================================================= */
+
+.config-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    background: rgba(0, 217, 255, 0.035);
+
+    border: 1px solid rgba(0, 217, 255, 0.1);
+}
+
+.config-row label {
+    color: #8fb4c5;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.config-row input {
+    width: 90px;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(0, 217, 255, 0.4);
+
+    background: #07131e;
+
+    color: #eafaff;
+
+    font-size: 16px;
+
+    outline: none;
+
+    text-align: center;
+
+    transition: 0.2s;
+}
+
+.config-row input:focus {
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 217, 255, 0.08),
+        0 0 18px rgba(0, 217, 255, 0.15);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.primary-btn,
+.controls button {
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(0, 217, 255, 0.65);
+
+    background:
+        linear-gradient(
+            135deg,
+            #075b78,
+            #06394e
+        );
+
+    color: #eaffff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 217, 255, 0.08);
+}
+
+.primary-btn:hover,
+.controls button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #087c9f,
+            #07516d
+        );
+
+    border-color: #00e5ff;
+
+    box-shadow:
+        0 7px 25px rgba(0, 217, 255, 0.18);
+}
+
+
+/* =========================================================
+   DIMENSIONS
+   ========================================================= */
+
+.dimensions-section {
+    margin-top: 25px;
+}
+
+.section-label {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+
+    color: #d9f6ff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.section-label span {
+    color: #557d8e;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+.dimensions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.dim {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    min-width: 95px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: rgba(0, 217, 255, 0.035);
+
+    border: 1px solid rgba(0, 217, 255, 0.12);
+
+    transition: 0.2s;
+}
+
+.dim:hover {
+    border-color: rgba(0, 217, 255, 0.4);
+
+    transform: translateY(-2px);
+}
+
+.dim small {
+    color: #5f94aa;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.dim input {
+    width: 100%;
+
+    height: 38px;
+
+    border-radius: 7px;
+
+    border: 1px solid rgba(0, 217, 255, 0.25);
+
+    background: #06111b;
+
+    color: #00e5ff;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    outline: none;
+}
+
+.dim input:focus {
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 12px rgba(0, 217, 255, 0.15);
+}
+
+
+/* =========================================================
+   MATRIX CHAIN
+   ========================================================= */
+
+.chain-box {
+    margin-top: 22px;
+
+    padding: 18px 20px;
+
+    border-radius: 12px;
+
+    background: #06121d;
+
+    border:
+        1px solid rgba(0, 217, 255, 0.14);
+}
+
+.chain-label {
+    color: #557f91;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 8px;
+}
+
+.chain {
+    color: #62eaff;
+
+    font-family: monospace;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   VISUALIZATION
+   ========================================================= */
+
+.visualization-panel {
+    overflow: hidden;
+}
+
+.visualization {
+    position: relative;
+
+    height: 500px;
+
+    margin: 0 -5px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 217, 255, 0.075),
+            rgba(3, 10, 17, 0.85) 42%,
+            rgba(3, 9, 15, 1) 75%
+        );
+
+    border:
+        1px solid rgba(0, 217, 255, 0.1);
+
+    perspective: 1100px;
+}
+
+
+/* =========================================================
+   STAGE
+   ========================================================= */
+
+.stage {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 1px;
+    height: 1px;
+
+    transform-style: preserve-3d;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   MATRIX CARDS
+   ========================================================= */
+
+.card {
+    position: absolute;
+
+    left: -70px;
+    top: -48px;
+
+    width: 140px;
+    height: 96px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 55, 72, 0.95),
+            rgba(5, 20, 31, 0.98)
+        );
+
+    border:
+        1px solid rgba(0, 225, 255, 0.7);
+
+    box-shadow:
+        0 0 18px rgba(0, 217, 255, 0.16),
+        inset 0 0 20px rgba(0, 217, 255, 0.035);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.65s cubic-bezier(.2,.8,.2,1),
+        opacity 0.5s;
+
+    z-index: 10;
+
+    will-change: transform;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(0, 217, 255, 0.08);
+
+    pointer-events: none;
+}
+
+.card b {
+    color: #8df4ff;
+
+    font-size: 25px;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 12px rgba(0, 217, 255, 0.45);
+}
+
+.card small {
+    color: #9abac7;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CORE
+   ========================================================= */
+
+.core {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 150px;
+    height: 150px;
+
+    margin-left: -75px;
+    margin-top: -75px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    transform-style: preserve-3d;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.core-ring {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(0, 217, 255, 0.45);
+
+    box-shadow:
+        0 0 30px rgba(0, 217, 255, 0.12),
+        inset 0 0 30px rgba(0, 217, 255, 0.08);
+
+    animation:
+        spin 8s linear infinite;
+}
+
+.core-ring::before,
+.core-ring::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed rgba(0, 217, 255, 0.25);
+}
+
+.core-ring::after {
+    inset: 30px;
+
+    border-style: solid;
+
+    border-color:
+        rgba(0, 217, 255, 0.15);
+}
+
+.core-inner {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 217, 255, 0.17),
+            rgba(3, 15, 24, 0.98) 70%
+        );
+
+    border:
+        1px solid rgba(0, 217, 255, 0.5);
+
+    box-shadow:
+        0 0 30px rgba(0, 217, 255, 0.16);
+}
+
+.core-inner span {
+    color: #70efff;
+
+    font-family: monospace;
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+.core-inner small {
+    margin-top: 4px;
+
+    color: #5c8a9d;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   STEP TEXT
+   ========================================================= */
+
+.step-text {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 24px;
+
+    transform: translateX(-50%);
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    background: rgba(0, 20, 31, 0.9);
+
+    border:
+        1px solid rgba(0, 217, 255, 0.3);
+
+    color: #62eaff;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+}
+
+.controls button {
+    min-width: 95px;
+}
+
+
+/* =========================================================
+   OPTIMIZE
+   ========================================================= */
+
+.optimization-panel {
+    text-align: center;
+}
+
+.optimize-btn {
+    min-height: 52px;
+
+    padding: 0 28px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(0, 229, 255, 0.7);
+
+    background:
+        linear-gradient(
+            135deg,
+            #087a9e,
+            #064660
+        );
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.7px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 217, 255, 0.12);
+}
+
+.optimize-btn span {
+    margin-right: 7px;
+
+    color: #fff;
+}
+
+.optimize-btn:hover {
+    box-shadow:
+        0 10px 38px rgba(0, 217, 255, 0.22);
+
+    border-color: #00eaff;
+}
+
+.error {
+    min-height: 20px;
+
+    margin-top: 14px;
+
+    color: #ff7285;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESULTS
+   ========================================================= */
+
+.metrics {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+}
+
+.metric {
+    min-height: 145px;
+
+    padding: 20px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 217, 255, 0.055),
+            rgba(4, 16, 26, 0.9)
+        );
+
+    border:
+        1px solid rgba(0, 217, 255, 0.12);
+
+    text-align: center;
+}
+
+.metric-label {
+    color: #60899a;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+}
+
+.metric-value {
+    margin-top: 18px;
+
+    color: #6befff;
+
+    font-family: monospace;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 0 15px rgba(0, 217, 255, 0.25);
+
+    word-break: break-word;
+}
+
+.metric-unit {
+    margin-top: 8px;
+
+    color: #466b7b;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   PARENTHESIZATION
+   ========================================================= */
+
+.parentheses-box {
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    background: #06121c;
+
+    border:
+        1px solid rgba(0, 217, 255, 0.12);
+}
+
+.result-label {
+    color: #5f899b;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+
+    margin-bottom: 10px;
+}
+
+.parentheses {
+    color: #d9fbff;
+
+    font-family: monospace;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   DP TABLE
+   ========================================================= */
+
+.dp-wrapper {
+    overflow-x: auto;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(2, 10, 17, 0.7);
+
+    border:
+        1px solid rgba(0, 217, 255, 0.1);
+}
+
+.dp {
+    display: grid;
+
+    width: max-content;
+
+    gap: 5px;
+
+    margin: 0 auto;
+}
+
+.cell {
+    width: 58px;
+    min-height: 42px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 5px;
+
+    border-radius: 6px;
+
+    background: #081a26;
+
+    border:
+        1px solid rgba(0, 217, 255, 0.12);
+
+    color: #a7d6e4;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    overflow: hidden;
+}
+
+.cell.diag {
+    color: #00e5ff;
+
+    background:
+        rgba(0, 217, 255, 0.08);
+
+    border-color:
+        rgba(0, 217, 255, 0.28);
+}
+
+.formula {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+
+    padding: 14px 17px;
+
+    border-radius: 9px;
+
+    background: rgba(0, 217, 255, 0.035);
+
+    border:
+        1px solid rgba(0, 217, 255, 0.08);
+}
+
+.formula span {
+    color: #568394;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.formula code {
+    color: #8defff;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 35px;
+
+    color: #426474;
+
+    font-family: monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .metrics {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .visualization {
+        height: 460px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+
+        padding-top: 25px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .panel-title h2 {
+        font-size: 18px;
+    }
+
+    .config-row {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .config-row input {
+        width: 100%;
+    }
+
+    .primary-btn {
+        width: 100%;
+    }
+
+    .dimensions {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .visualization {
+        height: 430px;
+    }
+
+    .card {
+        width: 115px;
+        height: 82px;
+
+        left: -57px;
+        top: -41px;
+    }
+
+    .card b {
+        font-size: 21px;
+    }
+
+    .core {
+        transform: scale(0.85);
+    }
+
+    .formula {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .dimensions {
+        grid-template-columns: 1fr;
+    }
+
+    .controls button {
+        min-width: 80px;
+
+        padding: 0 10px;
+    }
+
+    .visualization {
+        height: 390px;
+    }
+}

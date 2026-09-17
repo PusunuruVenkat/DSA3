@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Matrix Chain Multiplication Optimizer
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         BACKGROUND
+         ================================================== -->
+
+    <div class="background-grid"></div>
+
+    <div class="glow glow-one"></div>
+
+    <div class="glow glow-two"></div>
+
+
+    <!-- ==================================================
+         MAIN CONTAINER
+         ================================================== -->
+
+    <main class="container">
+
+
+        <!-- ==================================================
+             HEADER
+             ================================================== -->
+
+        <header class="header">
+
+            <div>
+
+                <div class="tag">
+                    INTERVAL DYNAMIC PROGRAMMING
+                </div>
+
+                <h1>
+                    MATRIX CHAIN
+                    <span>OPTIMIZER</span>
+                </h1>
+
+                <p class="subtitle">
+                    Visualize optimal matrix multiplication
+                    using dynamic programming.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+             INPUT PANEL
+             ================================================== -->
+
+        <section class="panel input-panel">
+
+            <div class="panel-title">
+
+                <span class="number">
+                    01
+                </span>
+
+                <div>
+
+                    <h2>
+                        MATRIX CONFIGURATION
+                    </h2>
+
+                    <p>
+                        Choose the number of matrices
+                        and enter their dimensions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MATRIX COUNT -->
+
+            <div class="config-row">
+
+                <label for="matrixCount">
+                    NUMBER OF MATRICES
+                </label>
+
+                <input
+                    id="matrixCount"
+                    type="number"
+                    min="1"
+                    max="12"
+                    value="3"
+                >
+
+                <button
+                    id="build"
+                    class="primary-btn"
+                    type="button"
+                >
+                    BUILD MATRICES
+                </button>
+
+            </div>
+
+
+            <!-- DIMENSIONS -->
+
+            <div class="dimensions-section">
+
+                <div class="section-label">
+                    DIMENSIONS
+                    <span>
+                        N MATRICES = N + 1 DIMENSIONS
+                    </span>
+                </div>
+
+
+                <div
+                    id="dims"
+                    class="dimensions"
+                ></div>
+
+            </div>
+
+
+            <!-- MATRIX CHAIN -->
+
+            <div class="chain-box">
+
+                <div class="chain-label">
+                    MATRIX CHAIN
+                </div>
+
+                <div
+                    id="chain"
+                    class="chain"
+                >
+                    A1 × A2 × A3
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             VISUALIZATION PANEL
+             ================================================== -->
+
+        <section class="panel visualization-panel">
+
+            <div class="panel-title">
+
+                <span class="number">
+                    02
+                </span>
+
+                <div>
+
+                    <h2>
+                        3D MATRIX VISUALIZATION
+                    </h2>
+
+                    <p>
+                        Watch the matrices move and merge
+                        during the optimization process.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3D STAGE -->
+
+            <div class="visualization">
+
+                <div
+                    id="stage"
+                    class="stage"
+                ></div>
+
+
+                <!-- CORE -->
+
+                <div class="core">
+
+                    <div class="core-ring"></div>
+
+                    <div class="core-inner">
+
+                        <span>
+                            MCM
+                        </span>
+
+                        <small>
+                            DP CORE
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP -->
+
+                <div
+                    id="stepText"
+                    class="step-text"
+                >
+                    READY
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+
+            <div class="controls">
+
+                <button
+                    id="prev"
+                    type="button"
+                >
+                    ◀ PREV
+                </button>
+
+                <button
+                    id="play"
+                    type="button"
+                >
+                    ▶ PLAY
+                </button>
+
+                <button
+                    id="next"
+                    type="button"
+                >
+                    NEXT ▶
+                </button>
+
+                <button
+                    id="reset"
+                    type="button"
+                >
+                    ↻ RESET
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             OPTIMIZATION
+             ================================================== -->
+
+        <section class="panel optimization-panel">
+
+            <div class="panel-title">
+
+                <span class="number">
+                    03
+                </span>
+
+                <div>
+
+                    <h2>
+                        OPTIMIZATION
+                    </h2>
+
+                    <p>
+                        Calculate the minimum scalar
+                        multiplication cost.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="optimize"
+                class="optimize-btn"
+                type="button"
+            >
+                <span>
+                    ⚡
+                </span>
+
+                OPTIMIZE MATRIX CHAIN
+            </button>
+
+
+            <div
+                id="error"
+                class="error"
+            ></div>
+
+        </section>
+
+
+        <!-- ==================================================
+             RESULTS
+             ================================================== -->
+
+        <section class="panel results-panel">
+
+            <div class="panel-title">
+
+                <span class="number">
+                    04
+                </span>
+
+                <div>
+
+                    <h2>
+                        OPTIMIZATION RESULTS
+                    </h2>
+
+                    <p>
+                        Comparison between optimized
+                        and naive multiplication.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="metrics">
+
+
+                <!-- OPTIMIZED -->
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        OPTIMIZED COST
+                    </div>
+
+                    <div
+                        id="optimized"
+                        class="metric-value"
+                    >
+                        —
+                    </div>
+
+                    <div class="metric-unit">
+                        SCALAR MULTIPLICATIONS
+                    </div>
+
+                </div>
+
+
+                <!-- NAIVE -->
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        NAIVE COST
+                    </div>
+
+                    <div
+                        id="naive"
+                        class="metric-value"
+                    >
+                        —
+                    </div>
+
+                    <div class="metric-unit">
+                        LEFT → RIGHT
+                    </div>
+
+                </div>
+
+
+                <!-- SAVED -->
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        OPERATIONS SAVED
+                    </div>
+
+                    <div
+                        id="saved"
+                        class="metric-value"
+                    >
+                        —
+                    </div>
+
+                    <div class="metric-unit">
+                        OPERATIONS
+                    </div>
+
+                </div>
+
+
+                <!-- EFFICIENCY -->
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        EFFICIENCY
+                    </div>
+
+                    <div
+                        id="eff"
+                        class="metric-value"
+                    >
+                        —
+                    </div>
+
+                    <div class="metric-unit">
+                        IMPROVEMENT
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARENTHESIZATION -->
+
+            <div class="parentheses-box">
+
+                <div class="result-label">
+                    OPTIMAL PARENTHESIZATION
+                </div>
+
+                <div
+                    id="parentheses"
+                    class="parentheses"
+                >
+                    —
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             DP TABLE
+             ================================================== -->
+
+        <section class="panel dp-panel">
+
+            <div class="panel-title">
+
+                <span class="number">
+                    05
+                </span>
+
+                <div>
+
+                    <h2>
+                        DP COST TABLE
+                    </h2>
+
+                    <p>
+                        Minimum multiplication cost
+                        for every matrix interval.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dp-wrapper">
+
+                <div
+                    id="dp"
+                    class="dp"
+                ></div>
+
+            </div>
+
+
+            <div class="formula">
+
+                <span>
+                    DP FORMULA
+                </span>
+
+                <code>
+                    dp[i][j] =
+                    min(dp[i][k] + dp[k+1][j]
+                    + p[i-1] × p[k] × p[j])
+                </code>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             FOOTER
+             ================================================== -->
+
+        <footer>
+
+            <span>
+                MATRIX CHAIN MULTIPLICATION
+            </span>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                INTERVAL DP
+            </span>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                JAVA SPRING BOOT
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
