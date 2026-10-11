@@ -1,28 +1,28 @@
-# Matrix Chain Multiplication Optimization
+# 3D Graphic Designing Using Matrix Chain Multiplication
 
-A Java Spring Boot project that implements **Matrix Chain Multiplication using Interval Dynamic Programming**.
+A fully input-driven Java website for demonstrating Matrix Chain Multiplication and related algorithmic analysis using an uploaded image or CSV dataset.
 
-## What This Code Does
+## Inputs
+- Image: converted to a grayscale numeric matrix automatically.
+- CSV: numeric columns are extracted automatically; text/class/label columns are not required.
 
-The application:
+## Main analysis
+- Input matrix preview and statistics
+- Sequence alignment DP table
+- KMP, Z-function and Rabin-Karp pattern matching
+- Suffix array and LCP analysis
+- Matrix Chain Multiplication
+- Complete MCM DP cost table
+- Optimal parenthesization
+- Minimum multiplication cost
+- Left-to-right comparison
+- Subset/bitmask DP demonstration
+- Capacity network and Edmonds-Karp maximum flow
 
-- Takes matrix dimensions as input.
-- Calculates the minimum number of scalar multiplications.
-- Finds the optimal parenthesization.
-- Compares the optimized cost with the naive left-to-right multiplication cost.
-- Calculates operations saved and efficiency.
-- Displays the results through a web interface.
-- Provides a 3D visualization of the matrix multiplication sequence.
+## Run on Windows
+1. Open CMD in this folder.
+2. Run `mvn clean package`.
+3. Run `java -jar target\graphic-designing-mcm-1.0.0.jar`.
+4. Open `http://localhost:8080`.
 
-## Algorithm
-
-The core algorithm is **Interval Dynamic Programming**.
-
-For matrices `A1...An`, the minimum multiplication cost is calculated using:
-
-```text
-dp[i][j] = min(
-    dp[i][k] +
-    dp[k+1][j] +
-    p[i-1] * p[k] * p[j]
-)
+You can also run on another port, for example `java -jar target\graphic-designing-mcm-1.0.0.jar 8090`.
